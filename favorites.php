@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    include("session.php");
     include("include.php");
 
     // establish connection to MySQL database or output error message.
