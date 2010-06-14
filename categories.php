@@ -1,6 +1,8 @@
 <?php
-include("session.php");
-include("include.php");
+
+require_once 'session.php';
+require_once 'include.php';
+
 // establish connection to MySQL database or output error message.
 $link = mysql_connect ($dbHost, $dbUser, $dbPassword);
 if (!mysql_select_db($dbName, $link)) {
@@ -14,11 +16,12 @@ $CategoryList .= " FROM Category";
 <html>
 <head>
 <title><?php echo $siteTitle ?></title>
+</head>
 <body>
 <?php
 $sessionUserId = $_SESSION[ "sessionUserId" ];
 
-echo "<style>";
+echo "<style type=\"text/css\">";
 echo "div.bnLogo { position: absolute; top: 2px; left: 10px; font-size: 42px; font-weight: bold; color: #CCCCCC;}";
 echo "div.bnTagline { position: absolute; top: 21px; left: 70px; font-size: 16px; font-weight: bold; color: black;}";
 echo "div.bnContent { padding-top: 30px; }";

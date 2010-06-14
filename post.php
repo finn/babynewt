@@ -1,6 +1,7 @@
 <?php
-include("session.php");
-include("include.php");
+
+require_once 'session.php';
+require_once 'include.php';
 
 // if user is not logged in, show message and login inputs
 if ( $_SESSION[ "sessionUserId" ] == -1 ) {
@@ -96,7 +97,7 @@ if (!Empty( $_REQUEST[ "btnSubmitPreviewedComment" ] )) {
     $StyleResId = mysql_query ($UserStyleQuery, $link);
     $StyleRes = mysql_fetch_object($StyleResId);
 
-    echo "\n<style>";
+    echo "\n<style type=\"text/css\">";
     echo "\n@import url(/essl.css);";
     echo "\n";
     echo $StyleRes->t_StyleSheet;
@@ -163,4 +164,5 @@ if (!Empty( $_REQUEST[ "btnSubmitPreviewedComment" ] )) {
     echo $tComment."\n";
     echo "</body></html>";
 }
+
 /* end of post.php */

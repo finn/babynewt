@@ -1,6 +1,8 @@
 <?php
-include("session.php");
-include("include.php");
+
+require_once 'session.php';
+require_once 'include.php';
+
 // establish connection to MySQL database or output error message.
 $link = mysql_connect ($dbHost, $dbUser, $dbPassword);
 if (!mysql_select_db($dbName, $link)) {
@@ -106,7 +108,7 @@ $TemplateQuery = "SELECT i_TemplateID
                 ORDER BY i_TemplateID";
 $TemplateQueryId = mysql_query ($TemplateQuery, $link);
 
-echo "<form name=\"frmSelection\" action=\"EditTemplate.php\" method=\"post\">\n";
+echo "<form name=\"frmSelection\" action=\"edittemplate.php\" method=\"post\">\n";
 echo "Your Templates: <select name=\"selTemplate\">\n";
 if ( Empty($selTemplate) && !Empty($hdnTemplateId)) {
     $selTemplate = $hdnTemplateId;
@@ -133,7 +135,7 @@ $TemplateQuery = "SELECT i_TemplateID, vc_TemplateName
                                     ORDER BY i_TemplateID";
 $TemplateQueryId = mysql_query ($TemplateQuery, $link);
 
-echo "<form name=\"frmSelection\" action=\"EditTemplate.php\" method=\"post\">\n";
+echo "<form name=\"frmSelection\" action=\"edittemplate.php\" method=\"post\">\n";
 echo "Public Templates: <select name=\"selTemplate\">\n";
 while ( $Templates = mysql_fetch_object($TemplateQueryId) ) {
     echo "<option value=\"$Templates->i_TemplateID\"";
@@ -163,7 +165,7 @@ if (  Empty($btnMakeMine)
         $selTemplate = $hdnTemplateId;
     }
     // Create a text area
-    echo "<form name=\"frmTemplate\" action=\"EditTemplate.php\" method=\"post\">";
+    echo "<form name=\"frmTemplate\" action=\"edittemplate.php\" method=\"post\">";
     echo "<input type=\"hidden\" name=\"hdnTemplateId\" value=\"";
     if ( !Empty( $btnNewTemplate ) ) {
         // if the button for a new stylesheet has been selected
@@ -237,7 +239,7 @@ if (  Empty($btnMakeMine)
     echo "Your selected template has been updated.";
 }
 
-echo "<form name=\"frmNewStylesheet\" action=\"EditTemplate.php\" method=\"post\">";
+echo "<form name=\"frmNewStylesheet\" action=\"edittemplate.php\" method=\"post\">";
 echo "<input type=\"submit\" name=\"btnNewTemplate\" value=\"New Template\">";
 echo "</form>";
 

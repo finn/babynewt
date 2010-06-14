@@ -1,9 +1,10 @@
 <?php
-include("session.php");
+
+require_once 'session.php';
 ob_start("ob_gzhandler");
 $timecheck1 = time();
 srand(time());
-include("include.php");
+require_once 'include.php';
 
 // establish connection to MySQL database or output error message.
 $link = mysql_connect ($dbHost, $dbUser, $dbPassword);
@@ -287,7 +288,7 @@ if ( $StyleRes = mysql_fetch_object($StyleResId) ) {
     $StyleRes = mysql_fetch_object($StyleResId);
 }
 
-$ssheet = "<style>";
+$ssheet = "<style type=\"text/css\">";
 $ssheet .= "@import url(/essl.css);";
 if ( $StyleRes ) {
     $ssheet .= "\n$StyleRes->t_StyleSheet\n";
@@ -578,4 +579,5 @@ $TimeCheck2 = time()- $timecheck1;
 
 echo "<!-- Page Processing time: $TimeCheck2 Seconds -->";
 echo "<!-- Tagline Id : $TaglineId -->";
+
 /* end of main.php */
